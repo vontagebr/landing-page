@@ -1,12 +1,13 @@
 <template>
   <div class="min-h-screen relative flex items-center justify-center">
     <div
-      class="absolute top-0 w-full h-full bg-forest bg-center bg-cover z-0 bg-overlay" />
+      class="absolute top-0 w-full h-full bg-center bg-cover z-0 bg-overlay bg-container"
+      :style="`background-image: url('${backgroundImage}') `" />
     <div
       class="flex flex-col md:flex-row md:space-x-10 z-10 items-center px-2 md:px-0">
       <img
         src="./assets/images/vontage-logo.svg"
-        class="-mt-20 md:mt-0 w-[160px] md:w-[250px] logo drop-shadow-[0_4px_4px_#000000]" />
+        class="-mt-20 md:mt-0 w-[160px] md:w-[200px] logo drop-shadow-[0_4px_4px_#000000]" />
       <div
         class="flex flex-col space-y-4 md:space-y-6 px-8 md:px-0 items-center text-white relative">
         <div
@@ -27,8 +28,19 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted } from 'vue'
-import { gsap } from 'gsap'
+import { onMounted, ref } from 'vue'
+import { gsap, Elastic, Power1 } from 'gsap'
+
+const images = [
+  '/sean-oulashin-KMn4VEeEPR8-unsplash.jpg',
+  '/rohit-tandon-9wg5jCEPBsw-unsplash.jpg',
+  '/kazuend-19SC2oaVZW0-unsplash.jpg'
+]
+
+const getRandomImage = () => images[Math.floor(Math.random() * images.length)]
+
+const backgroundImage = ref(getRandomImage())
+
 const timeline = gsap.timeline()
 
 const fadeOut = () => {
@@ -37,14 +49,14 @@ const fadeOut = () => {
   timeline.fromTo(
     '.bg-overlay',
     { filter: 'brightness(0.9)' },
-    { filter: 'brightness(0.4)', duration: 0.5, ease: 'power1.out' },
+    { filter: 'brightness(0.5)', duration: 0.5, ease: Power1.easeIn },
     '<0.5'
   )
 
   timeline.fromTo(
     '.title',
-    { opacity: 0, x: '100%' },
-    { opacity: 1, x: 0, duration: 1 },
+    { opacity: 0, x: '90%' },
+    { opacity: 1, x: 0, duration: 1, ease: Elastic.easeOut.config(0.8, 0.3) },
     '<0.5'
   )
 

@@ -8,9 +8,6 @@ module.exports = {
         orbitron: 'orbitron',
         billiondreams: 'BillionDreams',
         oleoscript: 'OleoScript'
-      },
-      backgroundImage: {
-        forest: "url('/kazuend-19SC2oaVZW0-unsplash.jpg')"
       }
     }
   },
