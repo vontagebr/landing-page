@@ -8,7 +8,7 @@
       v-if="isReady"
       class="min-h-screen relative flex items-center justify-center">
       <div
-        class="flex flex-col md:flex-row md:space-x-10 z-10 items-center px-2 md:px-0 bg-blue-300"
+        class="flex flex-col md:flex-row md:space-x-10 z-10 items-center px-2 md:px-0"
         ref="container">
         <div
           class="fixed top-0 left-0 w-full h-full bg-center bg-cover z-0 bg-overlay bg-container"
